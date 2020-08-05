@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:flutter/material.dart';
@@ -106,6 +107,9 @@ class _ChewieListItemState extends State<ChewieListItem> {
       // Prepare the video to be played and display the first frame
       autoInitialize: true,
       looping: widget.looping,
+      //fullScreenByDefault: true,
+      autoPlay: true,
+      deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
       // Errors can occur for example when trying to play a video
       // from a non-existent URL
       errorBuilder: (context, errorMessage) {
