@@ -9,7 +9,7 @@ class MainActivity: FlutterActivity() {
     override fun configureFlutterEngine( flutterEngine: FlutterEngine) {
         GeneratedPluginRegistrant.registerWith(flutterEngine);
     }
-    printInteger(int aNumber) {
-        print('The number is $aNumber.'); // Print to console.
-    }
+//    printInteger(int aNumber) {
+//        print('The number is $aNumber.'); // Print to console.
+//    }
 }

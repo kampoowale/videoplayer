@@ -24,7 +24,8 @@ dependencies:
   sqflite: ^1.2.0
   path_provider: ^1.5.1
   provider: ^4.0.1
-
+  chewie: 0.9.10
+  better_player: 0.0.12
 
 
 
