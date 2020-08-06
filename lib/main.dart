@@ -9,6 +9,8 @@ import 'package:video_player/video_player.dart';
 
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() => runApp(MyApp());
 
@@ -26,8 +28,29 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  Future<Album> fetchAlbum() async {
+    print('call api');
+    final response = await http.get('https://jsonplaceholder.typicode.com/albums/1');
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      final json = jsonDecode(response.body);
+      print("data response${json.toString()}");
+
+      return Album.fromJson(json.decode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load album');
+    }
+  }
+  Future<Album> futureAlbum;
+
   @override
   Widget build(BuildContext context) {
+    futureAlbum = fetchAlbum();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Video Player'),
@@ -213,7 +236,6 @@ class VideoScaffold extends StatefulWidget {
 }
 
 class _VideoScaffoldState extends State<VideoScaffold> {
-
   @override
   void initState() {
     SystemChrome.setPreferredOrientations([
@@ -222,6 +244,7 @@ class _VideoScaffoldState extends State<VideoScaffold> {
     ]);
    // AutoOrientation.portraitMode();
     super.initState();
+
   }
 
   @override
@@ -238,7 +261,26 @@ class _VideoScaffoldState extends State<VideoScaffold> {
   Widget build(BuildContext context) {
     return widget.child;
   }
+
+
+
 }
+class Album {
+  final int userId;
+  final int id;
+  final String title;
+
+  Album({this.userId, this.id, this.title});
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return Album(
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
 //  @override
 //  Widget build(BuildContext context) {
 //    // TODO: implement build
