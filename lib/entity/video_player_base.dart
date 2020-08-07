@@ -4,7 +4,7 @@
 //import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 //
-//import 'package:flutterw/base/BaseViewModel.dart';
+//import 'package:flutterw/base/video_details_entity.dart';
 //
 /////This class is used to handle base view of Awarebox Application
 //abstract class VideoPlayerBaseview<VM extends BaseViewModel>
