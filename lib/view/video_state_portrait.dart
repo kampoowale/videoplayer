@@ -63,10 +63,12 @@ class MyHomePage extends State<VideoView> {
     return
       !model.busy ?
       MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text('Video Player'),
-            ),
+          debugShowCheckedModeBanner: false,
+
+          home: Scaffold(
+//            appBar: AppBar(
+//              title: Text('Video Player'),
+//            ),
             body:
 
             ListView.builder(
@@ -118,13 +120,13 @@ class MyHomePage extends State<VideoView> {
   Widget feeds(int index,VideoViewModel model){
     return
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(0.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height:400,//double.infinity,
+              height:600,//double.infinity,
               width: 400,
 
               child: Align(
